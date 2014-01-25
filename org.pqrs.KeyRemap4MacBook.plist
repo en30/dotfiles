@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSWindow Frame SUUpdateAlertFrame</key>
+	<string>431 379 578 392 0 0 1440 878 </string>
+	<key>SUFeedURL</key>
+	<string>https://pqrs.org/macosx/keyremap4macbook/files/appcast.xml</string>
+	<key>SULastCheckTime</key>
+	<date>2014-01-22T03:16:52Z</date>
+	<key>configList</key>
+	<array>
+		<dict>
+			<key>identify</key>
+			<string>config_1384392872_80369</string>
+			<key>name</key>
+			<string>Default</string>
+		</dict>
+	</array>
+	<key>config_1384392872_80369</key>
+	<dict>
+		<key>notsave.automatically_enable_keyboard_device</key>
+		<integer>1</integer>
+		<key>notsave.automatically_enable_pointing_device</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlAE</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlD</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlH</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlI</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlK_ex</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlLeftbracket</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlM</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlPNBF</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlS</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlSlash</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlV</key>
+		<integer>1</integer>
+		<key>option.emacsmode_controlY</key>
+		<integer>1</integer>
+		<key>option.emacsmode_ex_controlSpace</key>
+		<integer>1</integer>
+		<key>option.emacsmode_optionV</key>
+		<integer>1</integer>
+		<key>remap.controlJ2enter</key>
+		<integer>1</integer>
+	</dict>
+	<key>isQuitByHand</key>
+	<false/>
+</dict>
+</plist>

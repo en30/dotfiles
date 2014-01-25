@@ -1,0 +1,8 @@
+(require 'git-gutter)
+(add-hook 'js2-mode-hook   'git-gutter-mode)
+(add-hook 'php-mode-hook   'git-gutter-mode)
+(add-hook 'ruby-mode-hook  'git-gutter-mode)
+(setq git-gutter:update-threshold 2)
+(setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
+(setq git-gutter:separator-sign "|")
+(set-face-foreground 'git-gutter:separator "yellow")

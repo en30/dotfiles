@@ -1,0 +1,25 @@
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+history
+ac-comphist.dat
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# elpa packages
+/elpa/
+
+# el-get
+/el-get/
+
+/url/
