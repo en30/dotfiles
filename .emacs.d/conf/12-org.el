@@ -14,3 +14,6 @@
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
 (define-key org-mode-map (kbd "C-c $") 'my-org-archive-done-tasks)
+
+;; face
+(set-face-foreground 'org-table "color-172")

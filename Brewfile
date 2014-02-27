@@ -21,15 +21,21 @@ install rbenv
 install rbenv-default-gems
 install rbenv-gem-rehash
 install readline
+install reattach-to-user-namespace
 install redis
 install ruby-build
 install selenium-server-standalone
 install sqlite
 install "http://toolbelt.treasuredata.com/brew/td-agent.rb"
 install the_silver_searcher
+install tmux
 install w3m
 install yuicompressor
 install z
+
+# canything
+tap en30/canything
+install canything
 
 # Ricty
 tap sanemat/font
@@ -48,6 +54,7 @@ install brew-cask
 
 cask install anki
 cask install appcleaner
+cask install bittorrent-sync
 cask install charles
 cask install cheatsheet
 cask install clamxav
@@ -76,7 +83,7 @@ cask install vlc
 cask install yorufukurou
 
 # google日本語入力
-# App Stroe
+# App Store
 # Alfred, GeekTool, LINE, Pocket, Skitch, XCode
 
 cleanup

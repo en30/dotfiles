@@ -55,4 +55,10 @@ alias java='java -Dfile.encoding=UTF-8'
 alias jar='jar -J-Dfile.encoding=UTF-8'
 alias plcat='plutil -convert xml1 -o -'
 
+alias tm='tmux'
+alias tma='tmux attach'
+alias tms='tmux new-session -s'
+alias tml='tmux list-sessions'
+
 eval "$(rbenv init -)"
+[[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh

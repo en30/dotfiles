@@ -7,7 +7,7 @@
 
 
 ;; split window
-(global-set-key (kbd "C-t") 'other-window-or-split)
+(global-set-key (kbd "C-o") 'other-window-or-split)
 (defun other-window-or-split ()
   (interactive)
   (when (one-window-p) (split-window-horizontally))
