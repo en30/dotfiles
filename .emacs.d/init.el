@@ -62,7 +62,6 @@
     ruby-block
     ruby-electric
     ruby-end
-    ruby-mode
     scss-mode
     slim-mode
     tabbar

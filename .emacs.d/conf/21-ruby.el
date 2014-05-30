@@ -1,10 +1,12 @@
 ;; ruby-mode
+(setq ruby-insert-encoding-magic-comment nil)
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
 				     interpreter-mode-alist))
 (setq ruby-deep-indent-paren-style nil)

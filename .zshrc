@@ -60,5 +60,9 @@ alias tma='tmux attach'
 alias tms='tmux new-session -s'
 alias tml='tmux list-sessions'
 
+alias bs='bin/spring'
+alias brails='bin/rails'
+alias br='bin/rake'
+
 eval "$(rbenv init -)"
 [[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
