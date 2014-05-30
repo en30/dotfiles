@@ -5,6 +5,7 @@ upgrade
 tap homebrew/science #for R
 
 install clisp
+install cmigemo
 install emacs
 install gnuplot
 install jq
