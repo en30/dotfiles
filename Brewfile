@@ -13,6 +13,7 @@ install jq
 install libyaml
 install mongodb
 install mysql
+install nvm
 install openssl
 install parallel
 install phantomjs

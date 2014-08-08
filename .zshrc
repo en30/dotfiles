@@ -108,5 +108,9 @@ alias bs='bin/spring'
 alias brails='bin/rails'
 alias br='bin/rake'
 
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 [[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
+
+source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
