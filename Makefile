@@ -1,4 +1,4 @@
-all: symlink developer-tools homebrew ruby apps-config oh-my-zsh
+all: symlink developer-tools homebrew ruby go apps-config oh-my-zsh
 minimum: symlink oh-my-zsh
 
 symlink:
@@ -24,6 +24,12 @@ ruby:
 	@ln -sfv default-gems ~/.rbenv/default-gems || true
 	@CONFIGURE_OPTS="--with-readline-dir=`brew --prefix` --with-openssl-dir=`brew --prefix openssl`" RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl`" rbenv install $(ruby-version)
 	@rbenv global $(ruby-version)
+
+go:
+	@go get github.com/peco/peco/cmd/peco
+	@go get github.com/peco/migemogrep
+	@go get github.com/motemen/ghq
+	@git config --global ghq.root ~/src
 
 apps-config:
 	@cp -ib org.pqrs.KeyRemap4MacBook.plist ~/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist || true

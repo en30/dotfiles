@@ -39,14 +39,58 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
 
 BREW_PREFIX=`brew --prefix`
-export _Z_CMD=j
+export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
-
+function j(){
+    if [ $# -eq 0 ] ; then
+	cd $(z | tail -r | awk "{print \$2}" | peco)
+    else
+	z $*
+    fi
+}
 export EDITOR=${BREW_PREFIX}/bin/emacsclient
 export PATH=${BREW_PREFIX}/bin:${PATH}
 export PATH=${PATH}:~/pear/bin
+
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+function peco-src () {
+    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-src
+bindkey '^]^r' peco-src
+
+function peco-tmuxinator() {
+    local project_name=$(ls ~/.tmuxinator | sed -e s/.yml// -e /tmuxinator.zsh/d | peco)
+    if [ -n "$project_name" ]; then
+	mux $project_name
+    fi
+    zle clear-screen
+}
+zle -N peco-tmuxinator
+bindkey '^]^t' peco-tmuxinator
 
 alias e=${BREW_PREFIX}/bin/emacs
 alias keytool='keytool -J-Dfile.encoding=UTF-8'

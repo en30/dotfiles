@@ -8,6 +8,7 @@ install clisp
 install cmigemo
 install emacs
 install gnuplot
+install go
 install jq
 install libyaml
 install mongodb
