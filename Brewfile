@@ -4,7 +4,9 @@ upgrade
 
 tap homebrew/science #for R
 
+install sbcl
 install clisp
+install clozure-cl
 install cmigemo
 install emacs
 install gnuplot

@@ -26,6 +26,7 @@
 (defvar installing-package-list
   '(
     ace-jump-mode
+    ac-slime
     coffee-mode
     color-theme
     eldoc-extension
@@ -63,6 +64,7 @@
     ruby-electric
     ruby-end
     scss-mode
+    slime
     slim-mode
     tabbar
     yaml-mode
