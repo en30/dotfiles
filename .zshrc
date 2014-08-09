@@ -41,16 +41,20 @@ HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
-BREW_PREFIX=`brew --prefix`
+BREW_PREFIX=$(brew --prefix)
 export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
-function j(){
-    if [ $# -eq 0 ] ; then
-	cd $(z | tail -r | awk "{print \$2}" | peco)
-    else
-	z $*
+function peco-recent-directory(){
+    local selected_dir=$(z | tail -r | awk '{print $2}' | peco)
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
     fi
+    zle clear-screen
 }
+zle -N peco-recent-directory
+bindkey '^]^f' peco-recent-directory
+
 export EDITOR=${BREW_PREFIX}/bin/emacsclient
 export PATH=${BREW_PREFIX}/bin:${PATH}
 export PATH=${PATH}:~/pear/bin
@@ -91,6 +95,16 @@ function peco-tmuxinator() {
 }
 zle -N peco-tmuxinator
 bindkey '^]^t' peco-tmuxinator
+
+function peco-multi-ssh() {
+    local hosts="$(grep -iE '^host[[:space:]]+[^*]' ~/.ssh/config | awk '{print $2}' | peco)"
+    if [ -n "$hosts" ]; then
+	multi_ssh ${=hosts}
+    fi
+    zle clear-screen
+}
+zle -N peco-multi-ssh
+bindkey '^]^h' peco-multi-ssh
 
 alias e=${BREW_PREFIX}/bin/emacs
 alias keytool='keytool -J-Dfile.encoding=UTF-8'
