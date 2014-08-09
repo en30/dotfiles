@@ -38,10 +38,6 @@ install w3m
 install yuicompressor
 install z
 
-# canything
-tap en30/canything
-install canything
-
 # Ricty
 tap sanemat/font
 install ricty
