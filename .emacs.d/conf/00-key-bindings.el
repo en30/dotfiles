@@ -31,3 +31,10 @@
     (setq deactivate-mark t)))
 
 (global-set-key (kbd "M-C-w") 'pbcopy)
+
+;; smartrep
+(require 'smartrep)
+(smartrep-define-key
+    global-map "C-x" '(("{" . 'shrink-window-horizontally)
+		       ("}" . 'enlarge-window-horizontally)
+		       ("^" . 'enlarge-window)))

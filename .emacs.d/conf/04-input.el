@@ -13,5 +13,21 @@
 
 ;; expand-region
 (require 'expand-region)
-(global-set-key (kbd "C-c C-SPC") 'er/expand-region)
-(global-set-key (kbd "C-c C-M-SPC") 'er/contract-region)
+(define-key global-map (kbd "C-M-@") 'er/expand-region)
+
+;; multiple-cursors
+(require 'multiple-cursors)
+(define-key global-map (kbd "C-M-e") 'mc/edit-lines)
+
+(defvar ctl-q-map (make-keymap))
+(define-key global-map (kbd "C-q") ctl-q-map)
+(smartrep-define-key
+    global-map "C-q" '(("C-n" . 'mc/mark-next-like-this)
+		       ("C-p" . 'mc/mark-previous-like-this)
+		       ("*"   . 'mc/mark-all-like-this)))
+
+;; regexp
+(require 'visual-regexp)
+(require 'visual-regexp-steroids)
+(define-key global-map (kbd "C-c C-r") 'vr/query-replace)
+(define-key global-map (kbd "C-c RET") 'vr/mc-mark)
