@@ -5,6 +5,7 @@ upgrade
 tap homebrew/science #for R
 
 install sbcl
+install cask
 install clisp
 install clozure-cl
 install cmigemo

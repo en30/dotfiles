@@ -3,10 +3,6 @@
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 
-;; drill-instructor
-(require 'drill-instructor)
-(setq drill-instructor-global t)
-
 ;; ace-jump-mode
 (autoload
   'ace-jump-mode

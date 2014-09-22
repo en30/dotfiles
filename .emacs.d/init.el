@@ -6,8 +6,6 @@
 (setq-default save-place t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(add-to-list 'load-path "~/.emacs.d/elpa/")
-
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -16,67 +14,10 @@
 (set-keyboard-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 
-;; package
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
-
-(require 'cl)
-(defvar installing-package-list
-  '(
-    ace-jump-mode
-    ac-slime
-    coffee-mode
-    color-theme
-    eldoc-extension
-    ess
-    ess-R-object-popup
-    expand-region
-    flymake-coffee
-    flymake-easy
-    flymake-json
-    flymake-php
-    flymake-ruby
-    flymake-sass
-    flymake-yaml
-    fuzzy
-    git-gutter
-    haml-mode
-    helm
-    helm-ag
-    helm-descbinds
-    highlight-current-line
-    init-loader
-    iedit
-    js2-mode
-    json-mode
-    magit
-    markdown-mode
-    mmm-mode
-    php-mode
-    popwin
-    processing-mode
-    rainbow-delimiters
-    rinari
-    rspec-mode
-    ruby-block
-    ruby-electric
-    ruby-end
-    scss-mode
-    slime
-    slim-mode
-    tabbar
-    yaml-mode
-    w3m
-    ))
-(let ((not-installed (loop for x in installing-package-list
-			   when (not (package-installed-p x))
-			   collect x)))
-  (when not-installed
-    (package-refresh-contents)
-    (dolist (pkg not-installed)
-      (package-install pkg))))
+;; cask
+(require 'cask "/usr/local/opt/cask/cask.el")
+(cask-initialize)
+(require 'pallet)
 
 ;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -92,7 +33,6 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipe")
 
 (el-get 'sync '(
-	  drill-instructor
 	  jaspace
 	  ))
 
