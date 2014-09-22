@@ -15,6 +15,8 @@ install gnuplot
 install go
 install jq
 install libyaml
+install lua
+install luarocks
 install mongodb
 install mysql
 install nvm
