@@ -1,5 +1,5 @@
-all: symlink developer-tools homebrew ruby go apps-config oh-my-zsh
-minimum: symlink oh-my-zsh
+all: symlink developer-tools homebrew ruby go zsh
+minimum: symlink zsh
 
 symlink:
 	@echo "Creating Symlink ..."
@@ -11,10 +11,9 @@ developer-tools:
 
 homebrew:
 	@echo "Installing homebrew ..."
-	@ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+	@ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	@echo "Installing libraries with homebrew ..."
 	@brew bundle
-	@ln -sfv /usr/local/opt/td-agent/*.plist ~/Library/LaunchAgents
 	@echo "Installing Ricty ..."
 	@cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
 	@fc-cache -vf
@@ -26,15 +25,14 @@ ruby:
 	@rbenv global $(ruby-version)
 
 go:
-	@go get github.com/peco/peco/cmd/peco
-	@go get github.com/peco/migemogrep
 	@go get github.com/motemen/ghq
 	@git config --global ghq.root ~/src
 
-apps-config:
-	@cp -ib org.pqrs.KeyRemap4MacBook.plist ~/Library/Preferences/org.pqrs.KeyRemap4MacBook.plist || true
-	@cp -ib com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist || true
-
-oh-my-zsh:
+zsh:
 	@echo "Installing oh-my-zsh ..."
 	@curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+	@mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+	@chsh -s /usr/local/bin/zsh
+
+shell:
+	@echo "/usr/local/bin/zsh" >> /etc/shells

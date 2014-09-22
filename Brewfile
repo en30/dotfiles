@@ -9,6 +9,7 @@ install clisp
 install clozure-cl
 install cmigemo
 install emacs
+install git
 install gnuplot
 install go
 install jq
@@ -31,12 +32,12 @@ install redis
 install ruby-build
 install selenium-server-standalone
 install sqlite
-install "http://toolbelt.treasuredata.com/brew/td-agent.rb"
 install the_silver_searcher
+install tig
 install tmux
 install w3m
-install yuicompressor
 install z
+install zsh
 
 # Ricty
 tap sanemat/font
@@ -49,6 +50,11 @@ install php55
 install php55-mongo
 install php55-xdebug
 
+# peco
+brew tap peco/peco
+brew install peco
+brew install migemogrep
+
 # cask
 tap phinze/cask
 install brew-cask
@@ -56,8 +62,8 @@ install brew-cask
 cask install anki
 cask install appcleaner
 cask install bittorrent-sync
+cask install caffeine
 cask install charles
-cask install cheatsheet
 cask install clamxav
 cask install clipmenu
 cask install dropbox
@@ -73,12 +79,12 @@ cask install hipchat
 cask install inkscape
 cask install iterm2
 cask install keyboard-cleaner
-cask install keyremap4macbook
+cask install karabiner
 cask install phpstorm
 cask install processing
 cask install shoes
 cask install skype
-cask install sqlite-browser
+cask install sqwiggle
 cask install virtualbox
 cask install vlc
 cask install yorufukurou
