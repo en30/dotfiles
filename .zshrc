@@ -42,8 +42,44 @@ SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
 BREW_PREFIX=$(brew --prefix)
+
+export EDITOR=${BREW_PREFIX}/bin/emacsclient
+export PATH=${BREW_PREFIX}/bin:${PATH}
+export PATH=${PATH}:~/pear/bin
+
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
+
 export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+[[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
+
+source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+
+alias keytool='keytool -J-Dfile.encoding=UTF-8'
+alias javac='javac -J-Dfile.encoding=UTF-8'
+alias java='java -Dfile.encoding=UTF-8'
+alias jar='jar -J-Dfile.encoding=UTF-8'
+alias plcat='plutil -convert xml1 -o -'
+
+function copy-line-as-kill() {
+    zle kill-line
+    print -rn $CUTBUFFER | pbcopy
+}
+zle -N copy-line-as-kill
+bindkey '^k' copy-line-as-kill
+
+function paste-as-yank() {
+    CUTBUFFER=$(pbpaste)
+    zle yank
+}
+zle -N paste-as-yank
+bindkey "^y" paste-as-yank
+
 function peco-recent-directory(){
     local selected_dir=$(z | tail -r | awk '{print $2}' | peco)
     if [ -n "$selected_dir" ]; then
@@ -55,12 +91,6 @@ function peco-recent-directory(){
 zle -N peco-recent-directory
 bindkey '^]^f' peco-recent-directory
 
-export EDITOR=${BREW_PREFIX}/bin/emacsclient
-export PATH=${BREW_PREFIX}/bin:${PATH}
-export PATH=${PATH}:~/pear/bin
-
-export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
@@ -105,26 +135,3 @@ function peco-multi-ssh() {
 }
 zle -N peco-multi-ssh
 bindkey '^]^h' peco-multi-ssh
-
-alias e=${BREW_PREFIX}/bin/emacs
-alias keytool='keytool -J-Dfile.encoding=UTF-8'
-alias javac='javac -J-Dfile.encoding=UTF-8'
-alias java='java -Dfile.encoding=UTF-8'
-alias jar='jar -J-Dfile.encoding=UTF-8'
-alias plcat='plutil -convert xml1 -o -'
-
-alias tm='tmux'
-alias tma='tmux attach'
-alias tms='tmux new-session -s'
-alias tml='tmux list-sessions'
-
-alias bs='bin/spring'
-alias brails='bin/rails'
-alias br='bin/rake'
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-[[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
-
-source $(brew --prefix nvm)/nvm.sh
-export NVM_DIR=~/.nvm
