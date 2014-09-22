@@ -25,14 +25,6 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
-;; flymake-ruby
-(require 'flymake-ruby)
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
-
-;; ruby-electric
-;; endなどの補完
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
 
 ;; ruby-block
 ;; endで対応するdoをハイライトなど
@@ -64,3 +56,8 @@
 ;; Rinari
 (require 'rinari)
 (global-rinari-mode)
+
+;; ruby-electric
+;; endなどの補完
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))

@@ -10,6 +10,3 @@
 (add-hook 'coffee-mode-hook
   '(lambda() (coffee-custom)))
 
-;; flymake-coffee
-(require 'flymake-coffee)
-(add-hook 'coffee-mode-hook 'flymake-coffee-load)

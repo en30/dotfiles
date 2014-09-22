@@ -2,9 +2,6 @@
 (require'php-mode)
 (setq php-mode-force-pear t)
 
-;; flymake
-(require 'flymake-php)
-(add-hook 'php-mode-hook 'flymake-php-load)
 
 ;; mmm-mode in php
 (require 'mmm-mode)

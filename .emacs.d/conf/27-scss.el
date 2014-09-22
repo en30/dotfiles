@@ -27,10 +27,6 @@
 			       ac-source-words-in-all-buffer
 			       ac-source-dictionary
 			       ))
-	    ;; (flymake-mode t)
 	    ))
 (add-to-list 'ac-modes 'scss-mode)
 
-;; flymake
-(require 'flymake-sass)
-(add-hook 'scss-mode-hook 'flymake-sass-load)
