@@ -21,4 +21,4 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; default browser
-(setq browse-url-browser-function 'w3m-browse-url)
+(setq browse-url-browser-function 'browse-url-default-macosx-browser)

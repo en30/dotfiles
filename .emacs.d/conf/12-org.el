@@ -17,3 +17,4 @@
 
 ;; face
 (set-face-foreground 'org-table "color-172")
+(set-face-foreground 'org-hide "#000000")

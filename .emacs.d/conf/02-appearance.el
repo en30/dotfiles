@@ -1,3 +1,5 @@
+(column-number-mode t)
+
 ;; highlight current line
 (require 'highlight-current-line)
 (highlight-current-line-on t)
@@ -31,6 +33,7 @@
 (setq anything-samewindow nil)
 (push '("^\*helm .+\*$" :regexp t) popwin:special-display-config)
 (push '("*rspec-compilation*" :height 20) popwin:special-display-config)
+(push '("^\*Man .+\*$" :regexp t) popwin:special-display-config)
 
 ;; tabbar
 (require 'tabbar)
