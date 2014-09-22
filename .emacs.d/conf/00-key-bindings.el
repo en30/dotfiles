@@ -5,7 +5,6 @@
 (global-set-key (kbd "C-M-v") 'scroll-down-command)
 (global-set-key (kbd "M-v") 'scroll-other-window)
 
-
 ;; split window
 (global-set-key (kbd "C-o") 'other-window-or-split)
 (defun other-window-or-split ()
