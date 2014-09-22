@@ -39,3 +39,12 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 (define-key global-map (kbd "%") 'match-paren)
+;; pbcopy
+(defun pbcopy ()
+  (interactive)
+  (when mark-active
+    (shell-command-on-region (point) (mark) "pbcopy")
+    (kill-buffer "*Shell Command Output*")
+    (setq deactivate-mark t)))
+
+(global-set-key (kbd "M-C-w") 'pbcopy)
