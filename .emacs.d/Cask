@@ -4,6 +4,7 @@
 
 (depends-on "ac-slime")
 (depends-on "ace-jump-mode")
+(depends-on "async")
 (depends-on "auto-complete")
 (depends-on "cask")
 (depends-on "coffee-mode")
@@ -55,7 +56,6 @@
 (depends-on "rspec-mode")
 (depends-on "ruby-block")
 (depends-on "ruby-compilation")
-(depends-on "ruby-electric")
 (depends-on "ruby-end")
 (depends-on "s")
 (depends-on "scss-mode")

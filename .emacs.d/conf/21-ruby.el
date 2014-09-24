@@ -57,7 +57,11 @@
 (require 'rinari)
 (global-rinari-mode)
 
-;; ruby-electric
-;; endなどの補完
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+;; ruby-end
+(require 'ruby-end)
+(add-hook 'ruby-mode-hook
+  '(lambda ()
+    (abbrev-mode 1)
+    (electric-pair-mode t)
+    (electric-indent-mode t)
+    (electric-layout-mode t)))
