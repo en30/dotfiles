@@ -1,7 +1,6 @@
 local application = require "mjolnir.application"
 local hotkey = require "mjolnir.hotkey"
 local window = require "mjolnir.window"
-local fnutils = require "mjolnir.fnutils"
 
 local key_app_map = {
    D = "Dash",
@@ -16,8 +15,16 @@ for key, app in pairs(key_app_map) do
    end)
 end
 
+local roundrobin = function(funcs)
+   local i = 1
+   return function()
+      funcs[i]()
+      i = i % #funcs + 1
+   end
+end
+
 -- ウインドウを {左半分, 右半分, フル} にリサイズ
-hotkey.bind({"ctrl"}, "9", fnutils.cycle({
+hotkey.bind({"ctrl"}, "9", roundrobin({
 	 function() window.focusedwindow():movetounit({x=0, y=0, w=0.5, h=1}) end,
 	 function() window.focusedwindow():movetounit({x=0.5, y=0, w=0.5, h=1}) end,
 	 function() window.focusedwindow():movetounit({x=0, y=0, w=1, h=1}) end
