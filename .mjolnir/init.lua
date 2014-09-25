@@ -1,6 +1,7 @@
 local application = require "mjolnir.application"
 local hotkey = require "mjolnir.hotkey"
 local window = require "mjolnir.window"
+local fnutils = require "mjolnir.fnutils"
 
 local key_app_map = {
    D = "Dash",
