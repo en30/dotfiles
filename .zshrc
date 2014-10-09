@@ -60,6 +60,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR=~/.nvm
 
+eval "$(hub alias -s)"
 alias keytool='keytool -J-Dfile.encoding=UTF-8'
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'

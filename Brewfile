@@ -13,6 +13,7 @@ install emacs
 install git
 install gnuplot
 install go
+install hub
 install jq
 install libyaml
 install lua
