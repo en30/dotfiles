@@ -13,6 +13,7 @@ install emacs
 install git
 install gnuplot
 install go
+install heroku-toolbelt
 install hub
 install jq
 install libyaml
