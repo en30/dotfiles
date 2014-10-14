@@ -136,3 +136,29 @@ function peco-multi-ssh() {
 }
 zle -N peco-multi-ssh
 bindkey '^]^h' peco-multi-ssh
+
+function peco-chrome-tabs () {
+    local tab_id=$(chrome-cli list tabs | peco --initial-matcher Migemo | sed -e 's/\[//' -e 's/].*//')
+    if [ -n "$tab_id" ]; then
+        chrome-cli activate -t $tab_id
+    fi
+}
+
+function peco-descbinds () {
+    zle $(bindkey | peco | cut -d " " -f 2)
+}
+zle -N peco-descbinds
+
+function peco-M-x () {
+    $(print -l ${(ok)functions} | sed -e /^_/d | peco)
+}
+zle -N peco-M-x
+bindkey '\ex' peco-M-x
+
+function peco-books () {
+    local book="$(find ~/Dropbox/books -type f | sed -e /.DS_Store/d | peco)"
+    if [ -n "$book" ]; then
+        open $book
+    fi
+}
+zle -N peco-books
