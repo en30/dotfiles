@@ -7,7 +7,8 @@ local key_app_map = {
    D = "Dash",
    C = "Google Chrome",
    T = "iTerm",
-   S = "Slack"
+   S = "Slack",
+   P = "Preview"
 }
 
 for key, app in pairs(key_app_map) do
@@ -15,6 +16,8 @@ for key, app in pairs(key_app_map) do
 	 application.launchorfocus(app)
    end)
 end
+
+hotkey.bind({"cmd"}, "up", function() application.launchorfocus("Preview") end)
 
 local roundrobin = function(funcs)
    local i = 1
