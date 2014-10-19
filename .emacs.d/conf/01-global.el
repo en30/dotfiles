@@ -22,3 +22,6 @@
 
 ;; default browser
 (setq browse-url-browser-function 'browse-url-default-macosx-browser)
+
+;; projectile
+(projectile-global-mode)

@@ -6,12 +6,29 @@
 (define-key global-map (kbd "C-M-z") 'helm-resume)
 (define-key global-map (kbd "M-C-m") 'helm-man-woman)
 
+(require 'helm-projectile)
+
 (require 'helm-ghq)
-(defconst helm-for-files-preferred-list
-  '(helm-source-buffers-list
+
+(defadvice helm-for-files (around update-helm-list activate)
+  (let ((helm-for-files-preferred-list
+         (helm-for-files-update-list)))
+    ad-do-it))
+
+(defun helm-for-files-update-list ()
+  `(helm-source-buffers-list
     helm-source-recentf
     helm-source-ghq
-    helm-source-files-in-current-dir))
+    helm-source-files-in-current-dir
+    helm-source-file-cache
+    ,(if (projectile-project-p)
+	 helm-source-projectile-files-list)))
+
+(require 'filecache)
+(file-cache-add-directory-list '("~/Dropbox/org"))
+(setq file-cache-filter-regexps
+      (append file-cache-filter-regexps
+              '("^..?$")))
 
 (eval-after-load 'helm
   '(progn
@@ -46,3 +63,7 @@
      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
+
+(defun projectile-helm-ag ()
+  (interactive)
+  (helm-ag (projectile-project-root)))

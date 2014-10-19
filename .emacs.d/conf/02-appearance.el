@@ -31,7 +31,7 @@
 (require 'popwin)
 (popwin-mode 1)
 (setq anything-samewindow nil)
-(push '("^\*helm .+\*$" :regexp t) popwin:special-display-config)
+(push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
 (push '("*rspec-compilation*" :height 20) popwin:special-display-config)
 (push '("^\*Man .+\*$" :regexp t) popwin:special-display-config)
 
