@@ -5,7 +5,7 @@
 	    (unless (or (file-exists-p "makefile")
 			(file-exists-p "Makefile"))
 	      (set (make-local-variable 'compile-command)
-		   (concat "g++ --std=c++0x -W -Wall -Wno-sign-compare -O2 "
+		   (concat "g++ --std=c++11 -W -Wall -Wno-sign-compare -O2 '"
 			   buffer-file-name
-			   " && ./a.out"
+			   "' && ./a.out"
 			   )))))
