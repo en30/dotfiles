@@ -38,9 +38,10 @@ hotkey.bind({"ctrl"}, "9", roundrobin({
 hotkey.bind({"alt"}, "o", function()
       local current_window = window.focusedwindow()
       local windows = current_window:application():allwindows()
+      table.sort(windows, function(a, b) return a:id() < b:id() end)
       local index = fnutils.indexof(windows, current_window)
       if not index then return end
       for i = 1, #windows do
-	 if windows[index % #windows + i]:focus() then break end
+	 if windows[(index + i) % #windows + 1]:focus() then break end
       end
 end)
