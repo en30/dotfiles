@@ -88,6 +88,7 @@ cask install iterm2
 cask install keyboard-cleaner
 cask install karabiner
 cask install licecap
+cask install mjolnir
 cask install phpstorm
 cask install processing
 cask install shoes

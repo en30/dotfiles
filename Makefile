@@ -22,6 +22,8 @@ apps-config:
 	@echo "Setting Karabiner ..."
 	@cp Karabiner/private.xml ~/Library/Application\ Support/Karabiner/private.xml
 	@sh Karabiner/karabiner-import.sh
+	@echo "Installing lua modules for mjolnir"
+	@for m in hotkey application window fnutils; do luarocks install mjolnir.$m; done
 
 export:
 	@echo "Exporting Karabiner's configuration ..."
