@@ -25,3 +25,8 @@
 
 ;; projectile
 (projectile-global-mode)
+
+;; to avoid "ls does not support --dired; see `dired-use-ls-dired' for more details."
+(when (eq system-type 'darwin)
+  (require 'ls-lisp)
+    (setq ls-lisp-use-insert-directory-program nil))

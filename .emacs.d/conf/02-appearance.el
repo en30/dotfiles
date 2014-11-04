@@ -23,9 +23,9 @@
                      :background "brown"))))
 
 ;; jaspace
-(require 'jaspace)
-(setq jaspace-highlight-tabs t)
-(add-hook 'mmm-mode-hook 'jaspace-mmm-mode-hook)
+;; (require 'jaspace)
+;; (setq jaspace-highlight-tabs t)
+;; (add-hook 'mmm-mode-hook 'jaspace-mmm-mode-hook)
 
 ;; popwin
 (require 'popwin)

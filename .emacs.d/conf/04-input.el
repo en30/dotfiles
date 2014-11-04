@@ -1,3 +1,5 @@
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)

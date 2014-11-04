@@ -32,9 +32,9 @@
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipe")
 
-(el-get 'sync '(
-	  jaspace
-	  ))
+;; (el-get 'sync '(
+;; 	  jaspace
+;; 	  ))
 
 ;; init-loader
 (require 'init-loader)
