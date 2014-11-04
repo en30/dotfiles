@@ -1,4 +1,4 @@
-all: symlink developer-tools homebrew ruby go zsh
+all: symlink developer-tools homebrew apps-config ruby go zsh
 minimum: symlink zsh
 
 symlink:
@@ -17,6 +17,16 @@ homebrew:
 	@echo "Installing Ricty ..."
 	@cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
 	@fc-cache -vf
+
+apps-config:
+	@echo "Setting Karabiner ..."
+	@cp Karabiner/private.xml ~/Library/Application\ Support/Karabiner/private.xml
+	@sh Karabiner/karabiner-import.sh
+
+export:
+	@echo "Exporting Karabiner's configuration ..."
+	@cp ~/Library/Application\ Support/Karabiner/private.xml Karabiner/private.xml
+	@sh /Applications/Karabiner.app/Contents/Library/bin/karabiner export > Karabiner/karabiner-import.sh
 
 ruby-version = 2.1.0
 ruby:
