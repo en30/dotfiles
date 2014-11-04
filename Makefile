@@ -1,4 +1,4 @@
-all: symlink developer-tools homebrew apps-config ruby go zsh
+all: symlink developer-tools homebrew fonts apps-config ruby go zsh
 minimum: symlink zsh
 
 symlink:
@@ -14,6 +14,8 @@ homebrew:
 	@ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	@echo "Installing libraries with homebrew ..."
 	@brew bundle
+
+fonts:
 	@echo "Installing Ricty ..."
 	@cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
 	@fc-cache -vf
