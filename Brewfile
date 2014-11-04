@@ -40,6 +40,7 @@ install sqlite
 install the_silver_searcher
 install tig
 install tmux
+install tree
 install w3m
 install z
 install zsh
@@ -68,6 +69,7 @@ cask install anki
 cask install appcleaner
 cask install bittorrent-sync
 cask install caffeine
+cask install keycastr
 cask install charles
 cask install clamxav
 cask install clipmenu
@@ -85,6 +87,7 @@ cask install inkscape
 cask install iterm2
 cask install keyboard-cleaner
 cask install karabiner
+cask install licecap
 cask install phpstorm
 cask install processing
 cask install shoes
