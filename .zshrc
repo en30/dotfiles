@@ -138,7 +138,7 @@ zle -N peco-multi-ssh
 bindkey '^]^h' peco-multi-ssh
 
 function peco-chrome-tabs () {
-    local tab_id=$(chrome-cli list tabs | peco --initial-matcher Migemo | sed -e 's/\[//' -e 's/].*//')
+    local tab_id=$(chrome-cli list tabs | peco --initial-matcher Migemo | sed -e s/.*:// -e s/].*//)
     if [ -n "$tab_id" ]; then
         chrome-cli activate -t $tab_id
     fi
