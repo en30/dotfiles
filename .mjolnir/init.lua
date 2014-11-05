@@ -17,8 +17,6 @@ for key, app in pairs(key_app_map) do
    end)
 end
 
-hotkey.bind({"cmd"}, "up", function() application.launchorfocus("Preview") end)
-
 local roundrobin = function(funcs)
    local i = 1
    return function()
