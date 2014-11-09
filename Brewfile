@@ -65,8 +65,10 @@ brew install migemogrep
 tap phinze/cask
 install brew-cask
 
+cask install alfred
 cask install anki
 cask install appcleaner
+cask install bettertouchtool
 cask install bittorrent-sync
 cask install caffeine
 cask install keycastr
@@ -100,6 +102,6 @@ cask install yorufukurou
 
 # google日本語入力
 # App Store
-# Alfred, GeekTool, LINE, Pocket, Skitch, XCode
+# GeekTool, LINE, Pocket, Skitch, XCode
 
 cleanup
