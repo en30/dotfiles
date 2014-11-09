@@ -67,3 +67,4 @@
 (defun projectile-helm-ag ()
   (interactive)
   (helm-ag (projectile-project-root)))
+(define-key global-map (kbd "C-q C-s") 'projectile-helm-ag)
