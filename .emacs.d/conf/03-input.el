@@ -1,3 +1,6 @@
+(standard-display-ascii ?\t "^I")
+(setq-default indent-tabs-mode nil)
+
 ;; auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
