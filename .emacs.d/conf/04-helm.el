@@ -6,10 +6,6 @@
 (define-key global-map (kbd "C-M-z") 'helm-resume)
 (define-key global-map (kbd "M-C-m") 'helm-man-woman)
 
-(require 'helm-projectile)
-
-(require 'helm-ghq)
-
 (defadvice helm-for-files (around update-helm-list activate)
   (let ((helm-for-files-preferred-list
          (helm-for-files-update-list)))
@@ -21,8 +17,24 @@
     helm-source-ghq
     helm-source-files-in-current-dir
     helm-source-file-cache
-    ,(if (projectile-project-p)
-	 helm-source-projectile-files-list)))
+    ,@(if (projectile-project-p)
+          '(helm-source-projectile-files-list
+            helm-projectile-bundle-gems-list))))
+
+(eval-after-load 'helm-projectile
+  '(progn
+     (defvar helm-projectile-bundle-gems-list
+       (helm-build-in-buffer-source "Bundle gems"
+         :data (lambda()
+                 (if (projectile-file-exists-p (expand-file-name "Gemfile" (projectile-project-root)))
+                     (split-string (shell-command-to-string "bundle show --paths") "\n" t)))
+         :fuzzy-match nil
+         :keymap helm-find-files-map
+         :help-message 'helm-ff-help-message
+         :mode-line helm-ff-mode-line-string
+         :action helm-projectile-file-actions
+         )
+       "Helm source definition for bundled gems.")))
 
 (require 'filecache)
 (file-cache-add-directory-list '("~/Dropbox/org"))
@@ -39,6 +51,7 @@
 
 (eval-after-load 'helm-files
   '(progn
+     (define-key helm-generic-files-map (kbd "C-h") 'delete-backward-char)
      (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
      (define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)
      (set-face-foreground 'helm-match "color-76")
@@ -68,3 +81,7 @@
   (interactive)
   (helm-ag (projectile-project-root)))
 (define-key global-map (kbd "C-q C-s") 'projectile-helm-ag)
+
+(setq helm-projectile-fuzzy-match nil)
+(require 'helm-projectile)
+(require 'helm-ghq)
