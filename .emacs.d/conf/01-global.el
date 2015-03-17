@@ -30,3 +30,8 @@
 (when (eq system-type 'darwin)
   (require 'ls-lisp)
     (setq ls-lisp-use-insert-directory-program nil))
+
+;; auto-insert
+(auto-insert-mode 1)
+(setq auto-insert-directory "~/.emacs.d/templates")
+(add-hook 'find-file-hooks 'auto-insert)

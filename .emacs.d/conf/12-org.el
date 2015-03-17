@@ -18,3 +18,7 @@
 ;; face
 (set-face-foreground 'org-table "color-172")
 (set-face-foreground 'org-hide "#000000")
+
+;; auto-insert
+(add-to-list 'auto-insert-alist
+             '("\\.org$" . "template.org"))
