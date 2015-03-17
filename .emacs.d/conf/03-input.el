@@ -36,3 +36,8 @@
 
 (add-hook 'before-save-hook '(lambda()
 			       (delete-trailing-whitespace)))
+
+(add-hook 'ido-setup-hook
+          (lambda ()
+            (define-key ido-completion-map (kbd "C-f") 'ido-next-match)
+            (define-key ido-completion-map (kbd "C-b")   'ido-prev-match)))
