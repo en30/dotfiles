@@ -6,7 +6,7 @@
 ;; mmm-mode in php
 (require 'mmm-mode)
 (setq mmm-submode-decoration-level 2)
-					;(invert-face 'mmm-default-submode-face t)
+                                        ;(invert-face 'mmm-default-submode-face t)
 (setq mmm-font-lock-available-p t)
 (setq mmm-global-mode 'maybe)
 (set-face-background 'mmm-default-submode-face nil)
@@ -24,5 +24,5 @@
     (php-mode)
     (dolist (v (buffer-local-variables))
       (when (string-match "\\`c-" (symbol-name (car v)))
-	(add-to-list 'mmm-save-local-variables `(,(car v) nil, mmm-c-derived-modes))))))
+        (add-to-list 'mmm-save-local-variables `(,(car v) nil, mmm-c-derived-modes))))))
 (save-mmm-c-locals)

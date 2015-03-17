@@ -125,7 +125,7 @@ bindkey '^]^r' peco-src
 function peco-tmuxinator() {
     local project_name=$(ls ~/.tmuxinator | sed -e s/.yml// -e /tmuxinator.zsh/d | peco)
     if [ -n "$project_name" ]; then
-	mux $project_name
+        mux $project_name
     fi
     zle clear-screen
 }
@@ -135,7 +135,7 @@ bindkey '^]^t' peco-tmuxinator
 function peco-multi-ssh() {
     local hosts="$(grep -iE '^host[[:space:]]+[^*]' ~/.ssh/config | awk '{print $2}' | peco)"
     if [ -n "$hosts" ]; then
-	multi_ssh ${=hosts}
+        multi_ssh ${=hosts}
     fi
     zle clear-screen
 }
@@ -143,7 +143,7 @@ zle -N peco-multi-ssh
 bindkey '^]^h' peco-multi-ssh
 
 function peco-chrome-tabs () {
-    local tab_id=$(chrome-cli list tabs | peco --initial-matcher Migemo | sed -e s/.*:// -e s/].*//)
+    local tab_id="$(chrome-cli list tabs | peco --initial-matcher Migemo | sed -e s/.*:// -e s/].*//)"
     if [ -n "$tab_id" ]; then
         chrome-cli activate -t $tab_id
     fi

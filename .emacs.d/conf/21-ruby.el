@@ -40,15 +40,15 @@
 
 (require 'rhtml-mode)
 (add-hook 'rhtml-mode-hook
-	  (lambda ()
-	    (rinari-launch)
-	    (set-face-background 'erb-exec-face "black")
-	    (set-face-foreground 'erb-exec-face "white")
-	    (set-face-background 'erb-face "black")
-	    (set-face-foreground 'erb-face "white")))
+          (lambda ()
+            (rinari-launch)
+            (set-face-background 'erb-exec-face "black")
+            (set-face-foreground 'erb-exec-face "white")
+            (set-face-background 'erb-face "black")
+            (set-face-foreground 'erb-face "white")))
 (setq auto-mode-alist
       (append '(("\\.erb$" . rhtml-mode))
-	      auto-mode-alist))
+              auto-mode-alist))
 
 ;; Rinari
 (require 'rinari)
@@ -57,7 +57,7 @@
 ;; ruby-end
 (require 'ruby-end)
 (add-hook 'ruby-mode-hook
-  '(lambda ()
-    (abbrev-mode 1)
-    (electric-pair-mode t)
-    (electric-layout-mode t)))
+          '(lambda ()
+             (abbrev-mode 1)
+             (electric-pair-mode t)
+             (electric-layout-mode t)))

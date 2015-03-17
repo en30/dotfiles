@@ -36,5 +36,5 @@
 (require 'smartrep)
 (smartrep-define-key
     global-map "C-x" '(("{" . 'shrink-window-horizontally)
-		       ("}" . 'enlarge-window-horizontally)
-		       ("^" . 'enlarge-window)))
+                       ("}" . 'enlarge-window-horizontally)
+                       ("^" . 'enlarge-window)))

@@ -16,8 +16,8 @@
 (define-key global-map (kbd "C-q") ctl-q-map)
 (smartrep-define-key
     global-map "C-q" '(("C-n" . 'mc/mark-next-like-this)
-		       ("C-p" . 'mc/mark-previous-like-this)
-		       ("*"   . 'mc/mark-all-like-this)))
+                       ("C-p" . 'mc/mark-previous-like-this)
+                       ("*"   . 'mc/mark-all-like-this)))
 (define-key global-map (kbd "C-q C-e") 'mc/edit-lines)
 
 ;; ace-jump-mode
@@ -35,7 +35,7 @@
 (define-key global-map (kbd "C-c RET") 'vr/mc-mark)
 
 (add-hook 'before-save-hook '(lambda()
-			       (delete-trailing-whitespace)))
+                               (delete-trailing-whitespace)))
 
 (add-hook 'ido-setup-hook
           (lambda ()
