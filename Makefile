@@ -34,7 +34,7 @@ export:
 
 ruby-version = 2.1.0
 ruby:
-	@ln -sfv default-gems ~/.rbenv/default-gems || true
+	@ln -sfv $PWD/default-gems ~/.rbenv/default-gems || true
 	@CONFIGURE_OPTS="--with-readline-dir=`brew --prefix` --with-openssl-dir=`brew --prefix openssl`" RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl`" rbenv install $(ruby-version)
 	@rbenv global $(ruby-version)
 
