@@ -178,3 +178,29 @@ function peco-pkill() {
     done
 }
 zle -N peco-pkill
+
+function peco-gitignore() {
+    local boilerplates="$(gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco)"
+    if [ -n "$boilerplates" ]; then
+        gibo ${=boilerplates} >> ${1:-.gitignore}
+    fi
+}
+zle -N peco-gitignore
+
+function ghq() {
+    if [ "$1" = "new" ]; then
+        shift
+        ghq-new "$@"
+    else
+        command ghq "$@"
+    fi
+}
+
+function ghq-new() {
+    mkdir -p "$(git config ghq.root)/github.com/$1"
+    cd $_
+    git init
+    peco-gitignore
+    touch README.md
+    git add .
+}

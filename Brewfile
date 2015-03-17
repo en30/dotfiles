@@ -10,6 +10,7 @@ install clisp
 install clozure-cl
 install cmigemo
 install emacs
+install gibo
 install git
 install gnuplot
 install go
