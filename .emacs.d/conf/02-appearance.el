@@ -35,6 +35,7 @@
 (push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
 (push '("*rspec-compilation*" :height 20) popwin:special-display-config)
 (push '("^\*Man .+\*$" :regexp t) popwin:special-display-config)
+(push '("*Clock Task Select*" :height 20) popwin:special-display-config)
 
 ;; tabbar
 (require 'tabbar)

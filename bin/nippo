@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'erb'
+
+md = (ARGV[0] == 'md')
+ARGV.shift if md
+
+case ARGV[0]
+when /\A\d{4}-\d{2}-\d{2}\z/
+  date = Date.parse(ARGV[0])
+else
+  now = Time.now
+  date = now.hour > 4 ? now.to_date : (Date.today - 1)
+end
+
+file = "#{ENV['NIPPO_DIRECTORY']}/#{date}.yml"
+
+if md
+  data = YAML.load_file(file)
+  puts ERB.new(DATA.read, nil, 2).result
+else
+  system("#{ENV['EDITOR']} #{file}")
+end
+
+__END__
+# 立てた予定
+<% data[:plan].each do |name, min| %>
+- <%= name %>（<%= min %>分）
+<% end %>
+
+# 本日の作業内容
+<% data[:result].each do |name, min| %>
+- <%= name %>（<%= min %>分）
+<% end %>

@@ -2,6 +2,7 @@ bundler
 pry
 pry-byebug
 pry-stack_explorer
+thyme
 tmuxinator
 gist
 rubocop

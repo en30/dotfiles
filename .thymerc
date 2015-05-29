@@ -1,0 +1,61 @@
+require 'pry'
+require 'yaml'
+require 'ostruct'
+theme = OpenStruct.new
+TOMATO = "\u{1F345}"
+
+option 'n NAME', 'name NAME', 'give a task name' do |name|
+  theme.task_name = name
+  @task_name = name
+  run
+end
+
+before do
+  `afplay /System/Library/Sounds/Glass.aiff`
+end
+
+after do |seconds_left|
+  `afplay /System/Library/Sounds/Glass.aiff`
+  `emacsclient -e '(org-clock-out)'`
+end
+
+set :tmux, true
+
+def theme.%(arr)
+  color = arr[0] == 'default' ? 'colour24' : 'colour160'
+  time = arr[1]
+  "#[bg=colour225] #{TOMATO} #[fg=%s] %s | #{task_name}" % [color, time]
+end
+set :tmux_theme, theme
+
+class Thyme::NippoPlugin
+  NIPPO_DIRECTORY = "#{ENV['HOME']}/Documents/nippo"
+
+  def nippo_file(&block)
+    now = Time.now
+    date = now.hour > 4 ? now.to_date : (Date.today - 1)
+    File.open("#{ENV['NIPPO_DIRECTORY']}/#{date}.yml", 'a+', &block)
+  end
+
+  def initialize(thyme)
+    @thyme = thyme
+  end
+
+  %w(task_name timer).each do |m|
+    define_method(m) do
+      @thyme.instance_variable_get(:"@#{m}")
+    end
+  end
+
+  def after(seconds_left)
+    nippo_file do |file|
+      data = YAML.load(file.read) || {plan: {}, result: {}}
+      data[:result][task_name] ||= 0
+      data[:result][task_name] += ((timer - seconds_left) / 60.0).round
+      file.truncate(0)
+      file.puts data.to_yaml
+    end
+  end
+end
+
+use Thyme::NippoPlugin

@@ -62,6 +62,9 @@ export NVM_DIR=~/.nvm
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
+export NIPPO_DIRECTORY="$HOME/Documents/nippo"
+mkdir -p $NIPPO_DIRECTORY
+
 autoload -U compinit
 compinit -U
 
