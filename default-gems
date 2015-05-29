@@ -5,3 +5,5 @@ pry-stack_explorer
 tmuxinator
 gist
 rubocop
+travis
+travis-lint

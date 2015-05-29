@@ -212,3 +212,6 @@ function ghq-new() {
     touch README.md
     git add .
 }
+
+# added by travis gem
+[ -f /Users/en30/.travis/travis.sh ] && source /Users/en30/.travis/travis.sh
