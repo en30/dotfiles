@@ -35,3 +35,6 @@
 (auto-insert-mode 1)
 (setq auto-insert-directory "~/.emacs.d/templates")
 (add-hook 'find-file-hooks 'auto-insert)
+
+;; alert
+(setq alert-default-style 'notifier)

@@ -4,6 +4,7 @@
 
 (depends-on "ac-slime")
 (depends-on "ace-jump-mode")
+(depends-on "alert")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "cask")
