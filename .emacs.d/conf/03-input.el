@@ -1,5 +1,17 @@
 (standard-display-ascii ?\t "^I")
 (setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+
+(electric-pair-mode 1)
+
+(defun better-upcase (beg end)
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  (if (and beg end)
+      (upcase-region beg end)
+    (upcase-word 1)))
+(define-key global-map (kbd "M-u") 'better-upcase)
 
 ;; auto-complete
 (require 'auto-complete)
