@@ -6,6 +6,8 @@ tap homebrew/science #for R
 
 install sbcl
 install cask
+install chromedriver
+install chrome-cli
 install clisp
 install clozure-cl
 install cmigemo
@@ -15,6 +17,7 @@ install gibo
 install git
 install gnuplot
 install go
+install graphviz
 install heroku-toolbelt
 install hub
 install jq
@@ -100,7 +103,6 @@ cask install skype
 cask install sqwiggle
 cask install virtualbox
 cask install vlc
-cask install yorufukurou
 
 # google日本語入力
 # App Store
