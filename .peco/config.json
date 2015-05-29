@@ -7,9 +7,9 @@
     "Selected": ["underline", "on_blue", "black"],
     "Query": ["yellow", "bold"]
   },
-  "CustomMatcher": {
-    "Migemo":[
-      "migemogrep", "$QUERY"
-    ]
+  "CustomFilter": {
+    "Migemo": {
+      "Cmd": "migemogrep"
+    }
   }
 }
