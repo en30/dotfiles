@@ -46,7 +46,7 @@ setopt hist_ignore_all_dups
 BREW_PREFIX=$(brew --prefix)
 
 export EDITOR=${BREW_PREFIX}/bin/emacsclient
-export PATH=${BREW_PREFIX}/bin:${PATH}
+export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
 export PATH=${PATH}:~/pear/bin
 
 export GOPATH=$HOME
