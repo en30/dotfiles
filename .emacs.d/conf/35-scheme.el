@@ -14,3 +14,5 @@
   (run-scheme "/usr/local/bin/gosh"))
 
 (define-key global-map (kbd "C-c S") 'scheme-other-window)
+
+(add-hook 'scheme-mode-hook 'my-lisp-mode-hook)

@@ -7,4 +7,8 @@
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
 (require 'rainbow-delimiters)
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+(defun my-lisp-mode-hook ()
+  (electric-pair-mode t)
+  (electric-indent-mode t)
+  (rainbow-delimiters-mode t))
+(add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
