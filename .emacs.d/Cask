@@ -72,4 +72,4 @@
 (depends-on "visual-regexp")
 (depends-on "visual-regexp-steroids")
 (depends-on "w3m")
-(depends-on "yaml-mode")
+(depends-on "yaml-mode")(depends-on "yasnippet")
