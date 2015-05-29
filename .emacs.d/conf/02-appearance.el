@@ -1,9 +1,10 @@
 (column-number-mode t)
 
-;; highlight current line
-(require 'highlight-current-line)
-(highlight-current-line-on t)
-(set-face-background 'highlight-current-line-face "#444444")
+(eval-after-load 'hl-line
+  (lambda() (set-face-background 'hl-line "#444444")))
+
+(global-hl-line-mode 1)
+(smart-cursor-color-mode 1)
 
 ;; hilight paren
 (show-paren-mode 1)
