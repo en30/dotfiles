@@ -41,7 +41,9 @@ install reattach-to-user-namespace
 install redis
 install ruby-build
 install selenium-server-standalone
+install sleepwatcher
 install sqlite
+install terminal-notifier
 install the_silver_searcher
 install tig
 install tmux

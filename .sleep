@@ -1,0 +1,9 @@
+#!/bin/sh
+
+SLEEP_WATCHER_DIRECTORY="$HOME/.sleepwatcher"
+SLEEP_INFO="$SLEEP_WATCHER_DIRECTORY/slept_at"
+if [ ! -d "$SLEEP_WATCHER_DIRECTORY" ]; then
+  mkdir $SLEEP_WATCHER_DIRECTORY
+fi
+
+date +"%s" > $SLEEP_INFO
