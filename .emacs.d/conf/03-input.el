@@ -74,4 +74,6 @@
       (signal 'quit "user quit!"))))
 (custom-set-variables '(yas/prompt-functions '(my-yas/prompt)))
 (define-key yas-minor-mode-map (kbd "M-=") 'yas-insert-snippet)
-(setq yas/triggers-in-field t)
+(setq yas-triggers-in-field t)
+(define-key yas-minor-mode-map [(tab)] nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
