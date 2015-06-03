@@ -31,11 +31,19 @@
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
-(setq anything-samewindow nil)
-(push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
-(push '("*rspec-compilation*" :height 20) popwin:special-display-config)
-(push '("^\*Man .+\*$" :regexp t) popwin:special-display-config)
-(push '("*Clock Task Select*" :height 20) popwin:special-display-config)
+(setq display-buffer-function 'popwin:display-buffer)
+(setq popwin:special-display-config
+      (append
+       '(("^\*helm.+\*$" :regexp t)
+         ("*rspec-compilation*" :height 20)
+         ("^\*Man .+\*$" :regexp t)
+         ("*Clock Task Select*" :height 20)
+         ("^\*Org Agenda.+\*$" :regexp t)
+         ("*Agenda Commands*")
+         (org-agenda-mode :position bottom :height 15 :stick t)
+         ("^CAPTURE-.+$" :regexp t)
+         ("*Org Select*"))
+       popwin:special-display-config) )
 
 ;; tabbar
 (require 'tabbar)
