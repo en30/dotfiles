@@ -70,6 +70,7 @@
 (depends-on "ruby-compilation")
 (depends-on "ruby-end")
 (depends-on "s")
+(depends-on "savekill")
 (depends-on "scss-mode")
 (depends-on "shut-up")
 (depends-on "slim-mode")

@@ -38,3 +38,6 @@
 
 ;; alert
 (setq alert-default-style 'notifier)
+
+;; savekill
+(require 'savekill)
