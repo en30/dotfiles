@@ -1,10 +1,26 @@
 (require 'org)
 (require 'org-habit)
 
-(setq org-log-done t)
-(setq org-agenda-files (list "~/org"))
+(setq
+ org-log-done t
+ org-agenda-files (list "~/org")
+ org-src-fontify-natively t
+ calendar-holidays nil
+ org-extend-today-until 6
+ org-agenda-sticky t
+ org-clock-persist t
+ org-clock-out-remove-zero-time-clocks t
+ org-capture-templates '(("t" "Todo" entry
+                          (file+headline "~/org/gtd.org" "Tasks")
+                          "* TODO %?\n   %i\n   %t")
+                         ("m" "Random memo" entry
+                          (file+headline "~/org/memo.org" "Idea")
+                          "* %?\n   %i\n   %t")
+                         ("i" "New Ideas" entry
+                          (file+headline "~/org/memo.org" "Memo")
+                          "* %?\n   %i\n   %t")))
 
-(setq org-src-fontify-natively t)
+(global-set-key (kbd "C-c c") 'org-capture)
 
 (defun my-org-archive-done-tasks ()
   (interactive)
@@ -96,3 +112,7 @@ This may send a notification and play a sound."
     (:long-break org-pomodoro-long-break-sound-args)
     (:tick org-pomodoro-ticking-sound-args)
     (t (error "Unknown org-pomodoro sound: %S" type))))
+
+;; clocker
+(require 'clocker)
+(clocker-mode t)
