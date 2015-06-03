@@ -1,35 +1,57 @@
 #!/usr/bin/env ruby
 
-require 'yaml'
+require 'thor'
+require 'json'
 require 'erb'
+require 'pry'
 
-md = (ARGV[0] == 'md')
-ARGV.shift if md
+class Nippo < Thor
+  DEFAULT_DATA = {plan: {"task name": 30}, result: {}}
+  default_command :edit
+  class_option :date, default: Date.today.to_s
 
-case ARGV[0]
-when /\A\d{4}-\d{2}-\d{2}\z/
-  date = Date.parse(ARGV[0])
-else
-  now = Time.now
-  date = now.hour > 4 ? now.to_date : (Date.today - 1)
+  desc 'edit', 'edit nippofile'
+  def edit
+    system("#{ENV['EDITOR']} #{nippo_file}")
+  end
+
+  desc 'md', 'output nippo in markdown'
+  def md
+    puts ERB.new(DATA.read, nil, 2).result(binding)
+  end
+
+  desc 'add', 'TASK_NAME MINUTES'
+  def add(name, minutes)
+    nippo_data[:result][name] ||= 0
+    nippo_data[:result][name] += minutes.to_i
+    File.write(nippo_file, JSON.pretty_generate(nippo_data))
+  end
+
+  private
+
+  def nippo_file
+    now = Time.now
+    date = options[:date]
+    date ||= now.hour > 4 ? now.to_date : (Date.today - 1)
+    file = "#{ENV['NIPPO_DIRECTORY']}/#{date}.json"
+    FileUtils.touch(file) unless File.exist?(file)
+    file
+  end
+
+  def nippo_data
+    @data ||= JSON.parse(File.read(nippo_file), symbolize_names: true) || DEFAULT_DATA
+  end
 end
 
-file = "#{ENV['NIPPO_DIRECTORY']}/#{date}.yml"
-
-if md
-  data = YAML.load_file(file)
-  puts ERB.new(DATA.read, nil, 2).result
-else
-  system("#{ENV['EDITOR']} #{file}")
-end
+Nippo.start
 
 __END__
 # 立てた予定
-<% data[:plan].each do |name, min| %>
+<% nippo_data[:plan].each do |name, min| %>
 - <%= name %>（<%= min %>分）
 <% end %>
 
 # 本日の作業内容
-<% data[:result].each do |name, min| %>
+<% nippo_data[:result].each do |name, min| %>
 - <%= name %>（<%= min %>分）
 <% end %>
