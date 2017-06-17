@@ -38,10 +38,13 @@ plugins=(brew bundler gem git npm rails rake redis-cli vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
+unsetopt complete_aliases
+alias __tig_main=_tig
+
 # Customize to your needs...
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
-setopt hist_ignore_all_dups
+setopt HIST_IGNORE_ALL_DUPS
 
 BREW_PREFIX=$(brew --prefix)
 
@@ -51,6 +54,8 @@ export PATH=${PATH}:~/pear/bin
 
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
+export LESS='-i -M -R -S -W -x2'
+# export RUBYGEMS_GEMDEPS=-
 
 export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
@@ -218,5 +223,11 @@ function ghq-new() {
     git add .
 }
 
+function peco-agsed() {
+    ag $1 | sed "s/$1/$1 => $2/g" | peco | awk -F: '{print $2; print $1}' | parallel -N 2 sed -i "''" '"'{1} s/$1/$2/g'"' {2}
+}
+
 # added by travis gem
 [ -f /Users/en30/.travis/travis.sh ] && source /Users/en30/.travis/travis.sh
+
+export PATH="$HOME/.yarn/bin:$PATH"

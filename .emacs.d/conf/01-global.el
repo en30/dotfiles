@@ -1,3 +1,5 @@
+(add-to-list 'exec-path (expand-file-name "~/bin"))
+
 ;; server
 (require 'server)
 (unless (server-running-p)
@@ -41,3 +43,39 @@
 
 ;; savekill
 (require 'savekill)
+
+(if (eq system-type 'darwin)
+    (defun play-sound-file (file)
+      (start-process "play-sound-file" nil "afplay" file)))
+
+;; ffap
+(defadvice ffap-file-at-point (after ffap-file-at-point-after-advice ())
+  (if (string= ad-return-value "/")
+      (setq ad-return-value nil)))
+(ad-activate 'ffap-file-at-point)
+
+;; utility
+(defun write-string-to-file (string file)
+  (interactive "sEnter the string: \nFFile to save to: ")
+  (with-temp-buffer
+    (insert string)
+    (when (file-writable-p file)
+      (write-region (point-min)
+                    (point-max)
+                    file
+                    nil
+                    :quiet))))
+
+
+(require 'which-func)
+(which-function-mode 1)
+(setq mode-line-format (delete (assoc 'which-func-mode
+                                      mode-line-format) mode-line-format)
+      which-func-header-line-format '(which-func-mode ("" which-func-format)))
+(defadvice which-func-ff-hook (after header-line activate)
+  (when which-func-mode
+    (setq mode-line-format (delete (assoc 'which-func-mode
+                                          mode-line-format) mode-line-format)
+          header-line-format which-func-header-line-format)))
+(eval-after-load "which-func"
+      '(setq which-func-modes '(emacs-lisp-mode c++-mode org-mode ruby-mode)))

@@ -2,3 +2,9 @@
 custom_plan.rb
 zeus.json
 projectile-bookmarks.eld
+
+.emacs.d/bookmarks
+.emacs.d/games
+.emacs.d/kill-ring-saved.el
+.emacs.d/yasnippet-snippets
+

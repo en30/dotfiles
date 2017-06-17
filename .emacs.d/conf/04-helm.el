@@ -1,10 +1,13 @@
 (require 'helm-config)
+(setq helm-projectile-fuzzy-match nil)
+
 (define-key global-map (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x C-r") 'helm-for-files)
 (define-key global-map (kbd "C-M-y") 'helm-show-kill-ring)
 (define-key global-map (kbd "C-M-z") 'helm-resume)
 (define-key global-map (kbd "M-C-m") 'helm-man-woman)
+(define-key global-map (kbd "M-i") 'helm-imenu)
 
 (defadvice helm-for-files (around update-helm-list activate)
   (let ((helm-for-files-preferred-list
@@ -31,7 +34,7 @@
          :fuzzy-match nil
          :keymap helm-find-files-map
          :help-message 'helm-ff-help-message
-         :mode-line helm-ff-mode-line-string
+         :mode-line helm-read-file-name-mode-line-string
          :action helm-projectile-file-actions
          )
        "Helm source definition for bundled gems.")))
@@ -82,6 +85,5 @@
   (helm-ag (projectile-project-root)))
 (define-key global-map (kbd "C-q C-s") 'projectile-helm-ag)
 
-(setq helm-projectile-fuzzy-match nil)
 (require 'helm-projectile)
 (require 'helm-ghq)

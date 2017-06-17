@@ -1,22 +1,16 @@
-(standard-display-ascii ?\t "^I")
 (setq-default indent-tabs-mode nil)
-(setq tab-width 4)
-
+(setq tab-width 2)
+(setq standard-indent 2)
 (electric-pair-mode 1)
-
-(defun better-upcase (beg end)
-  (interactive (if (use-region-p)
-                   (list (region-beginning) (region-end))
-                 (list nil nil)))
-  (if (and beg end)
-      (upcase-region beg end)
-    (upcase-word 1)))
-(define-key global-map (kbd "M-u") 'better-upcase)
 
 ;; auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
+(defun ac-common-setup ()
+  (add-to-list 'ac-sources 'ac-source-filename)
+  (add-to-list 'ac-sources 'ac-source-yasnippet))
+(ac-config-default)
 
 ;; expand-region
 (require 'expand-region)
@@ -58,6 +52,7 @@
 (add-to-list 'load-path
              "~/.emacs.d/snippets")
 (require 'yasnippet)
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-snippets")
 (yas-global-mode 1)
 (defun my-yas/prompt (prompt choices &optional display-fn)
   (let* ((names (loop for choice in choices

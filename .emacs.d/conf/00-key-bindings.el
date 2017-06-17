@@ -5,13 +5,6 @@
 (global-set-key (kbd "C-M-v") 'scroll-down-command)
 (global-set-key (kbd "M-v") 'scroll-other-window)
 
-;; split window
-(global-set-key (kbd "C-o") 'other-window-or-split)
-(defun other-window-or-split ()
-  (interactive)
-  (when (one-window-p) (split-window-horizontally))
-  (other-window 1))
-
 ;; kill-buffer-and-window
 (global-set-key (kbd "C-x RET 0") 'kill-buffer-and-window)
 
@@ -37,4 +30,15 @@
 (smartrep-define-key
     global-map "C-x" '(("{" . 'shrink-window-horizontally)
                        ("}" . 'enlarge-window-horizontally)
-                       ("^" . 'enlarge-window)))
+                       ("^" . 'enlarge-window)
+                       ("o" . 'other-window)
+                       ("C-@" . 'pop-global-mark)))
+
+(setq set-mark-command-repeat-pop 1)
+
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg)))
+
+(global-set-key (kbd "C-x C-h") 'backward-kill-line)

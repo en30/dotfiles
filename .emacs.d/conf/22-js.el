@@ -1,21 +1,12 @@
-;; js2-mode
-;; (autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 
-(add-hook 'js2-mode-hook
-          #'(lambda()
-              (require 'js)
-              (setq js-indent-level 2
-                    js-expr-indent-offset 2
-                    indent-tabs-mode nil)
-              (defun my-js-indent-line()
-                (interactive)
-                (let* ((parse-status (save-excursion (syntax-ppss (point-at-bol))))
-                       (offset (- (current-column) (current-indentation)))
-                       (indentation (js--proper-indentation parse-status)))
-                  (back-to-indentation)
-                  (if (looking-at "case\\s-")
-                      (indent-line-to (+ indentation 2))
-                    (js-indent-line))
-                  (when (> offset 0) (forward-char offset))))
-              (set (make-local-variable 'indent-line-function) 'js-indent-line)))
+(defun my-switch-project-hook ()
+  (if (and (projectile-project-p)
+           (projectile-file-exists-p "node_modules"))
+      (progn (setq import-js-project-root (projectile-project-root))
+             (setq flycheck-javascript-flow-executable
+                   (concat (projectile-project-root) "node_modules/.bin/flow")))))
+
+(add-hook 'flycheck-mode-hook 'my-switch-project-hook)
+
+(add-hook 'web-mode-hook 'flow-enable-automatically)

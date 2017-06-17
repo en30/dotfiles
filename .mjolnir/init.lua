@@ -9,7 +9,7 @@ local key_app_map = {
   T = "iTerm",
   S = "Slack",
   P = "Preview",
-  N = "Janetter"
+  N = "TweetDeck"
 }
 
 for key, app in pairs(key_app_map) do

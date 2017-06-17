@@ -43,25 +43,9 @@
          (org-agenda-mode :position bottom :height 15 :stick t)
          ("^CAPTURE-.+$" :regexp t)
          ("*Org Select*"))
-       popwin:special-display-config) )
+       popwin:special-display-config))
 
-;; tabbar
-(require 'tabbar)
-;; ボタンの無効化
-(dolist (btn '(tabbar-buffer-home-button
-               tabbar-scroll-left-button
-               tabbar-scroll-right-button))
-  (set btn (cons (cons "" nil)
-                 (cons "" nil))))
-;; ウインドウからはみ出たタブを省略して表示
-(setq tabbar-auto-scroll-flag nil)
-;; キーバインド
-(global-set-key (kbd "C-x 4 t") 'tabbar-mode)
-(global-set-key (kbd "C-x C-n") 'tabbar-forward)
-(global-set-key (kbd "C-x C-p") 'tabbar-backward)
-;; 色
-(set-face-foreground 'tabbar-selected "color-69")
-(set-face-background 'tabbar-default "#dddddd")
-;; セパレータの幅
-(setq tabbar-separator '(1.5))
-(tabbar-mode 1)
+;; visible-mark
+(global-visible-mark-mode 1)
+(setq visible-mark-max 2)
+(setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))

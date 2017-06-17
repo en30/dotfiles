@@ -5,8 +5,13 @@
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\|Cap\\|Guard\\|Vagrant\\)file$" . ruby-mode))
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
-				     interpreter-mode-alist))
+                                     interpreter-mode-alist))
+
+
+(setq ruby-deep-indent-paren nil)
 (setq ruby-deep-indent-paren-style nil)
+(setq ruby-use-smie nil)
+
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
         indent offset)
@@ -21,6 +26,21 @@
     (when indent
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
+
+;; (defadvice ruby-indent-line (after unindent-closing-paren activate)
+;;   (let ((column (current-column))
+;;         indent offset)
+;;     (save-excursion
+;;       (back-to-indentation)
+;;       (let ((state (syntax-ppss)))
+;;         (setq offset (- column (current-column)))
+;;         (when (and (eq (char-after) ?\))
+;;                    (not (zerop (car state))))
+;;           (goto-char (cadr state))
+;;           (setq indent (current-indentation)))))
+;;     (when indent
+;;       (indent-line-to indent)
+;;       (when (> offset 0) (forward-char offset)))))
 
 
 ;; ruby-block
@@ -61,3 +81,7 @@
              (abbrev-mode 1)
              (electric-pair-mode t)
              (electric-layout-mode t)))
+
+;; robe
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
