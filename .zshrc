@@ -38,6 +38,7 @@ plugins=(brew bundler gem git npm rails rake redis-cli vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
+setopt histignorespace
 unsetopt complete_aliases
 alias __tig_main=_tig
 
@@ -45,6 +46,7 @@ alias __tig_main=_tig
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
 
 BREW_PREFIX=$(brew --prefix)
 
