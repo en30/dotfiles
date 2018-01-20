@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react'
+// @flow
+import React from 'react'
 
 export default () => (
   <div>

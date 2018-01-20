@@ -5,7 +5,7 @@
             (unless (or (file-exists-p "makefile")
                         (file-exists-p "Makefile"))
               (set (make-local-variable 'compile-command)
-                   (concat "g++ -W -Wall -Wno-sign-compare -O2 '"
+                   (concat "/usr/local/bin/g++-6 -W -Wall -Wno-sign-compare -O2 '"
                            buffer-file-name
                            "' && ./a.out"
                            )))))

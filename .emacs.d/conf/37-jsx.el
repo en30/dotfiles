@@ -47,8 +47,3 @@
         template-replacements-alists)
   (goto-char (point-max))
   (message "done."))
-
-(defun eslint-fix ()
-  (interactive)
-  (shell-command (concat (projectile-project-root) "node_modules/.bin/eslint --fix " (buffer-file-name)))
-  (revert-buffer t t t))

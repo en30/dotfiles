@@ -1,5 +1,11 @@
 (add-to-list 'exec-path (expand-file-name "~/bin"))
 
+(defun my-regex-filter (my-pair)
+  "Run func if filename match the regexp.  MY-PAIR is a cons cell (regexp . func)."
+  (if (buffer-file-name)
+      (if (string-match (car my-pair) buffer-file-name)
+      (funcall (cdr my-pair)))))
+
 ;; server
 (require 'server)
 (unless (server-running-p)
@@ -79,3 +85,22 @@
           header-line-format which-func-header-line-format)))
 (eval-after-load "which-func"
       '(setq which-func-modes '(emacs-lisp-mode c++-mode org-mode ruby-mode)))
+
+(define-derived-mode ansi-compilation-mode compilation-mode "ansi compilation"
+  "Compilation mode that understands ansi colors."
+  (require 'ansi-color)
+  (toggle-read-only 0)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
+(defun colorize-compilation (one two)
+  "ansi colorize the compilation buffer."
+  (ansi-compilation-mode)
+ )
+
+(setq compilation-finish-function 'colorize-compilation)
+
+;; time tracking
+(global-wakatime-mode)
+
+;; jump to definition
+(dumb-jump-mode)
