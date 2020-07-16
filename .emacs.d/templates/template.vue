@@ -1,9 +1,13 @@
-<style lang="scss">
-</style>
-
-<template lang="jade">
+<template>
 _
 </template>
 
-<script lang="coffee">
+<script lang="ts">
+export default {
+
+}
 </script>
+
+<style scoped>
+
+</style>

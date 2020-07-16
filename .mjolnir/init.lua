@@ -9,7 +9,7 @@ local key_app_map = {
   T = "iTerm",
   S = "Slack",
   P = "Preview",
-  N = "TweetDeck"
+  R = "RubyMine"
 }
 
 for key, app in pairs(key_app_map) do
@@ -17,6 +17,15 @@ for key, app in pairs(key_app_map) do
       application.launchorfocus(app)
   end)
 end
+
+-- hotkey.bind({"cmd", "ctrl"}, "C", function()
+--     local current_app = window.focusedwindow():application():title()
+--     local next_app = {
+--       ["Google Chrome"] = "CLion",
+--       ["CLion"] = "Google Chrome"
+--     }
+--     application.launchorfocus(current_app and next_app[current_app] or "Google Chrome")
+-- end)
 
 hotkey.bind({"ctrl"}, "9", function()
     window.focusedwindow():movetounit({x=0, y=0, w=1, h=1})

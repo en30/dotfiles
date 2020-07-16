@@ -1,14 +1,11 @@
-(define-key c++-mode-map (kbd "C-c C-c") 'compile)
-(define-key c++-mode-map (kbd "C-c C-k") 'kill-compilation)
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (unless (or (file-exists-p "makefile")
-                        (file-exists-p "Makefile"))
-              (set (make-local-variable 'compile-command)
-                   (concat "/usr/local/bin/g++-6 -W -Wall -Wno-sign-compare -O2 '"
-                           buffer-file-name
-                           "' && ./a.out"
-                           )))))
+(add-hook 'before-save-hook
+  (lambda ()
+    (when (member major-mode '(c-mode c++-mode glsl-mode))
+      (progn
+        (when (locate-dominating-file "." ".clang-format")
+          (clang-format-buffer))
+        ;; Return nil, to continue saving.
+        nil))))
 
 ;; auto-insert
 (add-to-list 'auto-insert-alist

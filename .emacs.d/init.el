@@ -59,7 +59,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (prettier-js flycheck-julia dumb-jump wakatime-mode toml-mode elm-yasnippets elm-mode visible-mark restclient robe neotree alert async dash ess f flycheck git-commit helm helm-core inf-ruby log4e package-build visual-regexp flow-mode trr import-js ac-html ac-slime ace-jump-mode bison-mode clocker coffee-mode color-theme eldoc-extension ess-R-object-popup expand-region flycheck-pos-tip fuzzy git-gutter go-autocomplete go-eldoc go-mode gtags haml-mode haskell-mode helm-ag helm-descbinds helm-ghq helm-gtags helm-projectile iedit jade-mode json-mode json-reformat json-snatcher julia-mode lua-mode magit magit-popup markdown-mode migemo mmm-mode multiple-cursors nand2tetris org-pomodoro php-mode popup popwin processing-mode projectile rainbow-delimiters rhtml-mode rinari rspec-mode ruby-block ruby-compilation ruby-end savekill scss-mode slim-mode slime smart-cursor-color smartrep tabbar visual-regexp-steroids w3m web-mode with-editor yaml-mode yasnippet pallet init-loader)))
+    (clang-format terraform-mode feature-mode dockerfile-mode indent-guide ensime company tide typescript-mode vue-mode cask epl inflections s flycheck-elm rubocop prettier-js flycheck-julia dumb-jump toml-mode elm-yasnippets elm-mode visible-mark restclient robe neotree alert async dash ess f flycheck git-commit helm helm-core inf-ruby log4e package-build visual-regexp flow-mode trr import-js ac-html ac-slime ace-jump-mode bison-mode clocker coffee-mode color-theme eldoc-extension ess-R-object-popup expand-region flycheck-pos-tip fuzzy git-gutter go-autocomplete go-eldoc go-mode gtags haml-mode haskell-mode helm-ag helm-descbinds helm-ghq helm-gtags helm-projectile iedit jade-mode json-mode json-reformat json-snatcher julia-mode lua-mode magit magit-popup markdown-mode migemo mmm-mode multiple-cursors nand2tetris org-pomodoro php-mode popup popwin processing-mode projectile rainbow-delimiters rhtml-mode rinari rspec-mode ruby-block ruby-compilation ruby-end savekill scss-mode slim-mode slime smart-cursor-color smartrep tabbar visual-regexp-steroids w3m web-mode with-editor yaml-mode yasnippet pallet init-loader)))
  '(rspec-use-rake-when-possible nil)
  '(yas-prompt-functions (quote (my-yas/prompt))))
 (custom-set-faces
@@ -73,3 +73,4 @@
  '(web-mode-html-attr-name-face ((t (:foreground "brightgreen"))))
  '(web-mode-html-tag-bracket-face ((t (:foreground "brightcyan"))))
  '(web-mode-html-tag-face ((t (:foreground "magenta")))))
+(put 'downcase-region 'disabled nil)

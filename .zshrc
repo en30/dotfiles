@@ -54,6 +54,8 @@ export EDITOR=${BREW_PREFIX}/bin/emacsclient
 export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
 export PATH=${PATH}:~/pear/bin
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 export LESS='-i -M -R -S -W -x2'
@@ -61,8 +63,6 @@ export LESS='-i -M -R -S -W -x2'
 
 export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 [[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
 
@@ -226,10 +226,24 @@ function ghq-new() {
 }
 
 function peco-agsed() {
-    ag $1 | sed "s/$1/$1 => $2/g" | peco | awk -F: '{print $2; print $1}' | parallel -N 2 sed -i "''" '"'{1} s/$1/$2/g'"' {2}
+    ag $1 | sed "s|$1|($1 => $2)|g" | peco | awk -F: '{print $2; print $1}' | parallel -N 2 sed -i "''" '"'{1} "s|$1|$2|g"'"' {2}
 }
 
 # added by travis gem
 [ -f /Users/en30/.travis/travis.sh ] && source /Users/en30/.travis/travis.sh
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+function aws_account_info {
+  [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "%F{blue}aws:(%f%F{red}$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE%f%F{blue})%F$reset_color"
+}
+
+# )ofni_tnuocca_swa($ is $(aws_account_info) backwards
+PROMPT=`echo $PROMPT | rev | sed 's/ / )ofni_tnuocca_swa($ /'| rev`
+
+function gcloud_account_info() {
+    local account=$(cat ~/.config/gcloud/configurations/config_$(cat ~/.config/gcloud/active_config) | grep 'account = ' | awk -F' = ' '{print $2}')
+    local project=$(cat ~/.config/gcloud/configurations/config_$(cat ~/.config/gcloud/active_config) | grep 'project = ' | awk -F' = ' '{print $2}')
+    echo " %b%F{yellow}%K{blue} ⬣ ${project} %b%f%k"
+}
+PROMPT=$(echo $PROMPT | sed -e 's/%E/$(gcloud_account_info)%E/')

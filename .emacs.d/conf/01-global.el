@@ -104,3 +104,6 @@
 
 ;; jump to definition
 (dumb-jump-mode)
+
+;; indent-guide
+(indent-guide-global-mode)

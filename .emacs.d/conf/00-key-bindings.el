@@ -33,6 +33,11 @@
                        ("^" . 'enlarge-window)
                        ("o" . 'other-window)
                        ("C-@" . 'pop-global-mark)))
+(smartrep-define-key
+    global-map "ESC" '(("b" . 'backward-word)
+                       ("f" . 'forward-word)
+                       ("C-b" . 'backward-sexp)
+                       ("C-f" . 'forward-sexp)))
 
 (setq set-mark-command-repeat-pop 1)
 
