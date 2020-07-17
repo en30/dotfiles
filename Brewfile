@@ -32,6 +32,7 @@ brew "zsh"
 brew "peco"
 brew "ghq"
 brew "ricty"
+brew "git-secrets"
 
 cask "alfred"
 cask "anki"
