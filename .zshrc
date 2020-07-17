@@ -247,3 +247,9 @@ function gcloud_account_info() {
     echo " %b%F{yellow}%K{blue} ⬣ ${project} %b%f%k"
 }
 PROMPT=$(echo $PROMPT | sed -e 's/%E/$(gcloud_account_info)%E/')
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "~/google-cloud-sdk/path.zsh.inc" ]; then . "~/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "~/google-cloud-sdk/completion.zsh.inc" ]; then . "~/google-cloud-sdk/completion.zsh.inc"; fi

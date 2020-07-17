@@ -8,4 +8,5 @@ projectile-bookmarks.eld
 .emacs.d/kill-ring-saved.el
 .emacs.d/yasnippet-snippets
 .config/karabiner/automatic_backups/
+.config/gcloud
 
