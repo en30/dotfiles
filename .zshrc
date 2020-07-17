@@ -50,7 +50,7 @@ setopt HIST_IGNORE_SPACE
 
 BREW_PREFIX=$(brew --prefix)
 
-export EDITOR=${BREW_PREFIX}/bin/emacsclient
+export EDITOR="${BREW_PREFIX}/bin/code --wait"
 export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
 export PATH=${PATH}:~/pear/bin
 

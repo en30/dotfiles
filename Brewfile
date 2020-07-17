@@ -45,3 +45,5 @@ cask "inkscape"
 cask "iterm2"
 cask "mjolnir"
 cask "karabiner-elements"
+cask "visual-studio-code"
+
