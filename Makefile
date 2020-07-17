@@ -1,17 +1,13 @@
-all: symlink developer-tools homebrew fonts apps-config ruby go zsh
+all: symlink homebrew fonts apps-config ruby go zsh
 minimum: symlink zsh
 
 symlink:
 	@echo "Creating Symlink ..."
 	@sh symlink.sh
 
-developer-tools:
-	@echo "Installing Commandline Developer Tools ..."
-	@xcode-select --install
-
 homebrew:
 	@echo "Installing homebrew ..."
-	@ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	@echo "Installing libraries with homebrew ..."
 	@brew bundle
 
@@ -22,7 +18,7 @@ fonts:
 
 apps-config:
 	@echo "Installing lua modules for mjolnir"
-	@for m in hotkey application window fnutils; do luarocks install mjolnir.$m; done
+	@for m in hotkey application window fnutils; do luarocks install mjolnir.$$m --check-lua-versions; done
 
 ruby-version = 2.7.1
 ruby:

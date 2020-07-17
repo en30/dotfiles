@@ -1,58 +1,47 @@
-update
+tap "homebrew/cask"
+cask_args appdir: "/Applications"
+tap "sanemat/font"
 
-upgrade
+brew "emacs"
+brew "gibo"
+brew "git"
+brew "gnuplot"
+brew "go"
+brew "graphviz"
+brew "hub"
+brew "jq"
+brew "libyaml"
+brew "lua"
+brew "luarocks"
+brew "nvm"
+brew "openssl"
+brew "parallel"
+brew "postgresql"
+brew "rbenv"
+brew "rbenv-default-gems"
+brew "readline"
+brew "redis"
+brew "ruby-build"
+brew "sqlite"
+brew "the_silver_searcher"
+brew "tig"
+brew "tmux"
+brew "tree"
+brew "z"
+brew "zsh"
+brew "peco"
+brew "ghq"
+brew "ricty"
 
-install cask
-install emacs
-install gibo
-install git
-install gnuplot
-install go
-install graphviz
-install heroku-toolbelt
-install hub
-install jq
-install libyaml
-install lua
-install luarocks
-install nvm
-install openssl
-install parallel
-install postgresql
-install rbenv
-install rbenv-default-gems
-install rbenv-gem-rehash
-install readline
-install redis
-install ruby-build
-install sqlite
-install the_silver_searcher
-install tig
-install tmux
-install tree
-install z
-install zsh
-install peco
-install migemogrep
-install ghq
-
-# Ricty
-tap sanemat/font
-install ricty
-
-cask install alfred
-cask install anki
-cask install bettertouchtool
-cask install dropbox
-cask install firefox
-cask install gimp
-cask install google-chrome
-cask install google-drive
-cask install inkscape
-cask install iterm2
-cask install mjolnir
-
-# App Store
-# LINE, Skitch, XCode
-
-cleanup
+cask "alfred"
+cask "anki"
+cask "bettertouchtool"
+cask "dropbox"
+cask "firefox"
+cask "gimp"
+cask "google-chrome"
+cask "google-drive-file-stream"
+cask "inkscape"
+cask "iterm2"
+cask "mjolnir"
+cask "karabiner-elements"
