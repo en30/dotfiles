@@ -33,6 +33,7 @@ brew "peco"
 brew "ghq"
 brew "ricty"
 brew "git-secrets"
+brew "yarn"
 
 cask "alfred"
 cask "anki"
