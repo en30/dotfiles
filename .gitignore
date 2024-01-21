@@ -9,4 +9,5 @@ projectile-bookmarks.eld
 .emacs.d/yasnippet-snippets
 .config/karabiner/automatic_backups/
 .config/gcloud
+.config/hub
 
