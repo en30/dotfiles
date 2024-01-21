@@ -1,4 +1,4 @@
-all: symlink homebrew fonts apps-config ruby go zsh
+all: symlink homebrew fonts apps-config go zsh
 minimum: symlink zsh
 
 symlink:
@@ -19,12 +19,6 @@ fonts:
 apps-config:
 	@echo "Installing lua modules for mjolnir"
 	@for m in hotkey application window fnutils; do luarocks install mjolnir.$$m --check-lua-versions; done
-
-ruby-version = 2.7.1
-ruby:
-	@ln -sfv $PWD/default-gems ~/.rbenv/default-gems || true
-	@CONFIGURE_OPTS="--with-readline-dir=`brew --prefix` --with-openssl-dir=`brew --prefix openssl`" RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl`" rbenv install $(ruby-version)
-	@rbenv global $(ruby-version)
 
 go:
 	@git config --global ghq.root ~/src

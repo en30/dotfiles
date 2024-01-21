@@ -54,8 +54,6 @@ export EDITOR="${BREW_PREFIX}/bin/code --wait"
 export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
 export PATH=${PATH}:~/pear/bin
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 export LESS='-i -M -R -S -W -x2'
@@ -65,9 +63,6 @@ export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
 
 [[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
-
-source $(brew --prefix nvm)/nvm.sh
-export NVM_DIR=~/.nvm
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
@@ -253,6 +248,8 @@ if [ -f "~/google-cloud-sdk/path.zsh.inc" ]; then . "~/google-cloud-sdk/path.zsh
 
 # The next line enables shell command completion for gcloud.
 if [ -f "~/google-cloud-sdk/completion.zsh.inc" ]; then . "~/google-cloud-sdk/completion.zsh.inc"; fi
+
+. /usr/local/opt/asdf/asdf.sh
 
 export PATH="${PATH}:$HOME/flutter/bin"
 
