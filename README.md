@@ -5,7 +5,7 @@
 ```sh
 $ git clone git@github.com:en30/dotfiles.git
 $ make
-$ sudo make shell # adds homebrew based zsh to /etc/shells
+$ sudo vi /etc/shells # adds homebrew based zsh "$(brew --prefix)/bin/zsh"
 ```
 
 Then go to iTerm2 > Preferences > Genral > Preferences.

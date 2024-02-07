@@ -48,11 +48,11 @@ SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
 export EDITOR="${BREW_PREFIX}/bin/code --wait"
 export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
-export PATH=${PATH}:~/pear/bin
 
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
@@ -62,12 +62,8 @@ export LESS='-i -M -R -S -W -x2'
 export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
 
-[[ -s ~/.tmuxinator ]] && source ~/.tmuxinator/tmuxinator.zsh
-
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-
-export NIPPO_DIRECTORY="$HOME/Documents/nippo"
-mkdir -p $NIPPO_DIRECTORY
+fpath=($HOME/.asdf/completions $fpath)
 
 autoload -U compinit
 compinit -U
@@ -129,33 +125,6 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]^r' peco-src
 
-function peco-tmuxinator() {
-    local project_name=$(ls ~/.tmuxinator | sed -e s/.yml// -e /tmuxinator.zsh/d | peco)
-    if [ -n "$project_name" ]; then
-        mux $project_name
-    fi
-    zle clear-screen
-}
-zle -N peco-tmuxinator
-bindkey '^]^t' peco-tmuxinator
-
-function peco-multi-ssh() {
-    local hosts="$(grep -iE '^host[[:space:]]+[^*]' ~/.ssh/config | awk '{print $2}' | peco)"
-    if [ -n "$hosts" ]; then
-        multi_ssh ${=hosts}
-    fi
-    zle clear-screen
-}
-zle -N peco-multi-ssh
-bindkey '^]^h' peco-multi-ssh
-
-function peco-chrome-tabs () {
-    local tab_id="$(chrome-cli list tabs | peco --initial-matcher Migemo | sed -e s/.*:// -e s/].*//)"
-    if [ -n "$tab_id" ]; then
-        chrome-cli activate -t $tab_id
-    fi
-}
-
 function peco-descbinds () {
     zle $(bindkey | peco | cut -d " " -f 2)
 }
@@ -166,14 +135,6 @@ function peco-M-x () {
 }
 zle -N peco-M-x
 bindkey '\ex' peco-M-x
-
-function peco-books () {
-    local book="$(find ~/Dropbox/books -type f | sed -e /.DS_Store/d | peco)"
-    if [ -n "$book" ]; then
-        open $book
-    fi
-}
-zle -N peco-books
 
 alias -g B='$(git branch | peco | sed -e "s/^\*[ ]*//g")'
 
@@ -224,9 +185,6 @@ function peco-agsed() {
     ag $1 | sed "s|$1|($1 => $2)|g" | peco | awk -F: '{print $2; print $1}' | parallel -N 2 sed -i "''" '"'{1} "s|$1|$2|g"'"' {2}
 }
 
-# added by travis gem
-[ -f /Users/en30/.travis/travis.sh ] && source /Users/en30/.travis/travis.sh
-
 export PATH="$HOME/.yarn/bin:$PATH"
 
 function aws_account_info {
@@ -249,7 +207,6 @@ if [ -f "~/google-cloud-sdk/path.zsh.inc" ]; then . "~/google-cloud-sdk/path.zsh
 # The next line enables shell command completion for gcloud.
 if [ -f "~/google-cloud-sdk/completion.zsh.inc" ]; then . "~/google-cloud-sdk/completion.zsh.inc"; fi
 
-. /usr/local/opt/asdf/asdf.sh
+. "$HOME/.asdf/asdf.sh"
 
 export PATH="${PATH}:$HOME/flutter/bin"
-

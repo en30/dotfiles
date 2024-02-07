@@ -1,4 +1,4 @@
-all: symlink homebrew fonts apps-config go zsh
+all: symlink homebrew asdf go zsh
 minimum: symlink zsh
 
 symlink:
@@ -7,18 +7,14 @@ symlink:
 
 homebrew:
 	@echo "Installing homebrew ..."
-	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	@eval "$(/opt/homebrew/bin/brew shellenv)"
 	@echo "Installing libraries with homebrew ..."
 	@brew bundle
 
-fonts:
-	@echo "Installing Ricty ..."
-	@cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
-	@fc-cache -vf
-
-apps-config:
-	@echo "Installing lua modules for mjolnir"
-	@for m in hotkey application window fnutils; do luarocks install mjolnir.$$m --check-lua-versions; done
+asdf:
+	@echo "Installing asdf ..."
+	@git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 
 go:
 	@git config --global ghq.root ~/src
