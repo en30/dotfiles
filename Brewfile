@@ -1,7 +1,6 @@
 cask_args appdir: "/Applications"
 tap "delphinus/sfmono-square"
 
-brew "emacs"
 brew "gibo"
 brew "git"
 brew "gnuplot"

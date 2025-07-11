@@ -1,5 +1,0 @@
-#+STARTUP: overview
-#+TODO: TODO(t!) WAIT(w!) | DONE(d!) SOMEDAY(s!) CANCEL(c!)
-#+TAGS: @OFFICE(o) @HOME(h)
-#+TAGS: PROJECT(p)
-#+STARTUP: hidestars
