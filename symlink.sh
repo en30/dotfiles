@@ -12,3 +12,5 @@ for dotfile in .?*; do
             ;;
     esac
 done
+
+ln -Fis "$PWD/ghostty_config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
