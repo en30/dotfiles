@@ -14,7 +14,11 @@ homebrew:
 
 asdf:
 	@echo "Installing asdf ..."
-	@git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+	@mkdir -p ~/bin
+	@curl -L https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-darwin-arm64.tar.gz -o /tmp/asdf.tar.gz
+	@echo "fe907d3af2d4600787349c01d4cbdb96  /tmp/asdf.tar.gz" | md5sum -c -
+	@tar -xzf /tmp/asdf.tar.gz -C ~/bin
+	@rm /tmp/asdf.tar.gz
 
 go:
 	@git config --global ghq.root ~/src

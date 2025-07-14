@@ -74,7 +74,6 @@ export _Z_CMD=z
 . ${BREW_PREFIX}/etc/profile.d/z.sh
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-fpath=($HOME/.asdf/completions $fpath)
 
 autoload -U compinit
 compinit -U
@@ -216,7 +215,8 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
-. "$HOME/.asdf/asdf.sh"
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 export PATH="${PATH}:$HOME/flutter/bin"
 
