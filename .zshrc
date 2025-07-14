@@ -51,7 +51,7 @@ setopt HIST_IGNORE_SPACE
 eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
-export EDITOR="${BREW_PREFIX}/bin/code --wait"
+export EDITOR="/usr/local/bin/zed --wait"
 export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
 
 export GOPATH=$HOME

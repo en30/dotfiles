@@ -1,0 +1,70 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // "j k": "vim::SwitchToNormalMode"
+    }
+  },
+  // https://zed.dev/docs/ai/edit-prediction
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "ctrl-i": "editor::AcceptEditPrediction"
+    }
+  },
+  // Bind `tab` back to its original behavior.
+  {
+    "context": "Editor",
+    "bindings": {
+      "tab": "editor::Tab"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "tab": "editor::ComposeCompletion"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || vim_mode == replace || vim_mode == waiting",
+    "bindings": {
+      "tab": "vim::Tab"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "bindings": {
+      "tab": ["vim::Literal", ["tab", "\u0009"]]
+    }
+  },
+  // Emacs like keybindings on insert mode
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-p": "editor::MoveUp",
+      "ctrl-n": "editor::MoveDown",
+      "ctrl-b": "editor::MoveLeft",
+      "ctrl-f": "editor::MoveRight",
+      "ctrl-e": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": false }],
+      "ctrl-v": "editor::PageDown",
+      "ctrl-cmd-v": "editor::PageUp",
+      "ctrl-m": "editor::Newline",
+      "ctrl-h": "editor::Backspace",
+      "ctrl-d": "editor::Delete",
+      "ctrl-/": "editor::Undo"
+    }
+  }
+]

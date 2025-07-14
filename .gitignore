@@ -2,7 +2,13 @@
 custom_plan.rb
 zeus.json
 
+.config/*
+!.config/emmet
+!.config/gh-copilot
+!.config/gh
+!.config/karabiner
 .config/karabiner/automatic_backups/
-.config/gcloud
-.config/hub
-
+!.config/zed/
+.config/zed/*
+!.config/zed/keymap.json
+!.config/zed/settings.json
