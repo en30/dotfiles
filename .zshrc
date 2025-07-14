@@ -34,9 +34,20 @@ DISABLE_UPDATE_PROMPT="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler gem git npm rails rake redis-cli vagrant)
+plugins=(brew bundler gem git npm rails rake redis-cli)
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+MODE_INDICATOR="%F{white}-- NORMAL --%f"
+INSERT_MODE_INDICATOR="%F{yellow}-- INSERT --%f"
 
 source $ZSH/oh-my-zsh.sh
+
+bindkey -M viins '^B' backward-char
+bindkey -M viins '^F' forward-char
+bindkey -M viins '^D' delete-char
+
+RPROMPT="\$(vi_mode_prompt_info) $RPROMPT"
 
 setopt histignorespace
 unsetopt complete_aliases
@@ -113,6 +124,8 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+bindkey -M viins '^r' peco-select-history
+bindkey -M vicmd '/' peco-select-history
 
 function peco-src () {
     local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
