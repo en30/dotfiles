@@ -78,7 +78,6 @@ fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit -U
 
-eval "$(hub alias -s)"
 alias plcat='plutil -convert xml1 -o -'
 
 function copy-line-as-kill() {
