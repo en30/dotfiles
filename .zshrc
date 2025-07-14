@@ -80,10 +80,6 @@ autoload -U compinit
 compinit -U
 
 eval "$(hub alias -s)"
-alias keytool='keytool -J-Dfile.encoding=UTF-8'
-alias javac='javac -J-Dfile.encoding=UTF-8'
-alias java='java -Dfile.encoding=UTF-8'
-alias jar='jar -J-Dfile.encoding=UTF-8'
 alias plcat='plutil -convert xml1 -o -'
 
 function copy-line-as-kill() {
@@ -215,10 +211,10 @@ function gcloud_account_info() {
 PROMPT=$(echo $PROMPT | sed -e 's/%E/$(gcloud_account_info)%E/')
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "~/google-cloud-sdk/path.zsh.inc" ]; then . "~/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "~/google-cloud-sdk/completion.zsh.inc" ]; then . "~/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 . "$HOME/.asdf/asdf.sh"
 

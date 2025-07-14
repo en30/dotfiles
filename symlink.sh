@@ -7,8 +7,8 @@ for dotfile in .?*; do
             continue;;
         .git)
             continue;;
-        *)
-            ln -Fis "$PWD/$dotfile" $HOME
+       *)
+            ln -Fis "$PWD/$dotfile" "$HOME"
             ;;
     esac
 done
