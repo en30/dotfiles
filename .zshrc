@@ -219,4 +219,7 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 . "$HOME/.asdf/asdf.sh"
 
 export PATH="${PATH}:$HOME/flutter/bin"
+
+. "$HOME/.cargo/env"
+
 export GGML_METAL_PATH_RESOURCES="$(brew --prefix whisper-cpp)/share/whisper-cpp"

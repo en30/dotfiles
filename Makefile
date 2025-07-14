@@ -1,4 +1,4 @@
-all: symlink homebrew asdf go zsh
+all: symlink homebrew asdf go rust zsh
 minimum: symlink zsh
 
 symlink:
@@ -18,6 +18,10 @@ asdf:
 
 go:
 	@git config --global ghq.root ~/src
+
+rust:
+	@echo "Installing rust ..."
+	@curl https://sh.rustup.rs -sSf | sh
 
 zsh:
 	@echo "Installing oh-my-zsh ..."
