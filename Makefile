@@ -1,4 +1,4 @@
-all: symlink homebrew asdf go rust zsh
+all: symlink homebrew asdf go rust zsh gcloud
 minimum: symlink zsh
 
 symlink:
@@ -26,6 +26,14 @@ go:
 rust:
 	@echo "Installing rust ..."
 	@curl https://sh.rustup.rs -sSf | sh
+
+gcloud:
+	@echo "Installing gcloud ..."
+	@curl -L https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-arm.tar.gz -o /tmp/google-cloud-sdk.tar.gz
+	@echo "829354216486a573db79725e204f59dbfd1e6fdabcab151bff739a6aaacd7c6b  /tmp/google-cloud-sdk.tar.gz" | shasum -a 256 -c -
+	@tar -xf /tmp/google-cloud-sdk.tar.gz -C ~/
+	@~/google-cloud-sdk/install.sh
+	@rm /tmp/google-cloud-sdk.tar.gz
 
 zsh:
 	@echo "Installing oh-my-zsh ..."
