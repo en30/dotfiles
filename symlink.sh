@@ -13,4 +13,5 @@ for dotfile in .?*; do
     esac
 done
 
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty/"
 ln -Fis "$PWD/ghostty_config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
